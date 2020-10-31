@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, TextInput, TouchableOpacity } from "react-native";
-import LinearGradient from 'react-native-linear-gradient';
+import { Text, View, TextInput } from "react-native";
+import Button from "@components/UI/Button";
 
 const SearchName = ({
     onSearch
@@ -24,31 +24,9 @@ const SearchName = ({
                 }}
                 placeholder="Search by dragon name ..."
             />
-            <TouchableOpacity
-                style={{
-                    width: "100%",
-                    borderWidth: 1,
-                    borderColor: "#df8500",
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    borderRadius: 7,
-                    marginTop: 20
-                }}
-                onPress={() => onSearch(name)}
-            >
-                <LinearGradient
-                    colors={['#f9db53', '#e7a402']}
-                    style={{
-                        flex: 1,
-                        paddingVertical: 10,
-                        paddingHorizontal: 5,
-                        flexDirection: "row",
-                        justifyContent: "center",
-                    }}
-                >
-                    <Text style={{ fontSize: 16, fontFamily: "Grobold" }}>Search</Text>
-                </LinearGradient>
-            </TouchableOpacity>
+            <Button onPress={() => onSearch(name)}>
+                <Text style={{ fontSize: 16, fontFamily: "Grobold" }}>Search</Text>
+            </Button>
         </View>
     )
 }

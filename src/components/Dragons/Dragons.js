@@ -3,6 +3,7 @@ import { Text, View, Image, FlatList, RefreshControl, ActivityIndicator } from "
 import BlockContent from "@components/sharedcomponents/BlockContent";
 import DragonItem from "./DragonItem";
 import { isArray } from "lodash";
+import Divider from "@components/UI/Divider";
 
 
 const PAGE_SIZE_DEFAULT = 5;
@@ -114,7 +115,7 @@ const Dragons = ({
                                 )
                             }}
                             keyExtractor={(item, index) => index.toString()}
-                            ItemSeparatorComponent={renderSeparator}
+                            ItemSeparatorComponent={Divider}
                             ListFooterComponent={renderFooter}
                             onEndReachedThreshold={0.4}
                             onEndReached={handleLoadMore}
