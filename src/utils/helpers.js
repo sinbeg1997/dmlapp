@@ -190,6 +190,22 @@ export function calculateFoodCost(oldLevel, newLevel, shortFormat) {
     return foodCost;
 }
 
+export function calculateMaxLevel(currentLevel, availableFood) {
+    let maxLevel = currentLevel;
+    while (1) {
+        if (foodCostLevels[maxLevel]) {
+            availableFood -= foodCostLevels[maxLevel];
+        } else {
+            break;
+        }
+        if (availableFood < 0) {
+            break;
+        }
+        maxLevel++
+    };
+    return maxLevel;
+}
+
 let foodCostLevels = [
     0, 4, 8, 16, 40, 80, 160, 320, 640, 1280, 2560, 5120, 6400, 8400, 12000, 16000, 20500, 25000, 35000, 50000,
     65000, 82500, 100000, 120000, 150000, 180000, 216000, 252000, 288000, 324000, 364000, 412000, 460000, 512000,

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView, View, ImageBackground } from "react-native";
 import FoodCalculation from '@components/FoodCalculation';
+import MaxLevelCalculation from "@components/MaxLevelCalculation";
 
 
 const Feeding = () => {
@@ -19,6 +20,12 @@ const Feeding = () => {
                     marginTop: 30
                 }}>
                     <FoodCalculation />
+                </View>
+                <View style={{
+                    marginBottom: 50,
+                    marginTop: 30
+                }}>
+                    <MaxLevelCalculation />
                 </View>
             </ImageBackground>
         </ScrollView>
