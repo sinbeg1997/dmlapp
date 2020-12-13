@@ -16,7 +16,7 @@ const ManageDragon = () => {
             setTimeout(() => {
                 const data = dragonTemplates.slice(page * pageSize, pageSize * (page + 1));
                 resolve(data);
-            }, 250);
+            }, 100);
         })
     }
 

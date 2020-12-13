@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Text, View, Image, Dimensions } from "react-native";
 import { APP_DOMAIN } from "@constant/constant";
 import { get, isString } from "lodash";
-import { calcBaseAttack, calcBaseHealth } from "@utils/helpers";
+import { calcBaseAttack, calcBaseHealth, calcBaseGold } from "@utils/helpers";
 
 const DragonItem = ({
     dragonData,
@@ -15,6 +15,7 @@ const DragonItem = ({
     const dragonType = get(dragonData, "type", null) && isString(dragonData.type) ? dragonData.type.toLowerCase() : '';
     const baseAttack = calcBaseAttack(dragonName, dragonElements, dragonType);
     const baseHealth = calcBaseHealth(dragonName, dragonElements, dragonType);
+    const baseGold = calcBaseGold(dragonElements, dragonType);
     return (
         <View
             style={{
@@ -111,6 +112,22 @@ const DragonItem = ({
                                 }}
                             />
                             <Text style={{ fontFamily: "Grobold", fontSize: 16 }}>{baseHealth}</Text>
+                        </View>
+                        <View style={{
+                            flexDirection: "row",
+                            alignItems: "center"
+                        }}>
+                            <Image
+                                style={{
+                                    width: 28,
+                                    height: 28,
+                                    marginRight: 5
+                                }}
+                                source={{
+                                    uri: `${APP_DOMAIN}/images/gold.png`
+                                }}
+                            />
+                            <Text style={{ fontFamily: "Grobold", fontSize: 16 }}>{baseGold}</Text>
                         </View>
                     </View>
                 </View>

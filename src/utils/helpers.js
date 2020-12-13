@@ -1,7 +1,8 @@
 import {
     LIST_ELEMENT_INFO,
     LIST_EXCEPT_ATTACK_DRAGONS,
-    LIST_EXCEPT_HEALTH_DRAGONS
+    LIST_EXCEPT_HEALTH_DRAGONS,
+    LIST_BASE_GOLD_BY_TYPE
 } from "./config";
 import { isString, isEmpty, isObject, isArray } from "lodash";
 
@@ -434,6 +435,26 @@ export function calcBaseHealth(dragonName, elements, type) {
         health *= 4;
     }
     return health;
+}
+
+export function calcBaseGold(elements, type) {
+    if (!isArray(elements)) return '---';
+    if (!isString(type)) return '---';
+    let baseGold = 180;
+    let sumGoldElement = 0;
+    let uppercaseType = isString(type) ? type.toUpperCase() : type;
+    elements.forEach((element) => {
+        const uppercaseElement = isString(element) ? element.toUpperCase() : element;
+        if (LIST_ELEMENT_INFO.has(uppercaseElement)) {
+            const eleInfo = LIST_ELEMENT_INFO.get(uppercaseElement);
+            sumGoldElement += eleInfo.baseGold;
+        }
+    });
+    baseGold += sumGoldElement;
+    if (LIST_BASE_GOLD_BY_TYPE.has(uppercaseType)) {
+        baseGold += LIST_BASE_GOLD_BY_TYPE.get(uppercaseType);
+    }
+    return baseGold;
 }
 
 

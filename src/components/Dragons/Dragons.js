@@ -53,18 +53,6 @@ const Dragons = ({
 
     }
 
-    const renderSeparator = () => {
-        return (
-            <View
-                style={{
-                    height: 1,
-                    width: '100%',
-                    backgroundColor: '#CED0CE',
-                    borderStyle: "dashed"
-                }}
-            />
-        );
-    };
     const renderFooter = () => {
         //it will show indicator at the bottom of the list when data is loading otherwise it returns null
         if (isLoadMore) {
