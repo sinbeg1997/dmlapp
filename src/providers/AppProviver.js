@@ -1,7 +1,7 @@
 import React, { useReducer, useMemo, useEffect } from 'react';
 import { APP_DOMAIN } from "../constant/constant";
 import { isEqual, isEmpty } from "lodash";
-import { ActivityIndicator, View, Text } from 'react-native';
+import { ActivityIndicator, View, Text, Image } from 'react-native';
 
 const AppContext = React.createContext();
 
@@ -65,12 +65,21 @@ function AppProvider({ children }) {
             {
                 state.isFetching ?
                     <View style={{
-                        flexDirection: "row",
                         justifyContent: "center",
                         alignItems: "center",
                         flex: 1,
                     }}>
-                        <Text>Loading planner ...</Text>
+                        <Image
+                            style={{
+                                width: 100,
+                                height: 67.5,
+                                resizeMode: "contain"
+                            }}
+                            source={require("@assets/img/chronos.png")}
+                        />
+                        <View style={{ marginTop: 10 }}>
+                            <Text style={{ fontFamily: "Grobold" }}>Loading planner ...</Text>
+                        </View>
                         {/* <ActivityIndicator size="large" color="#00ff00" /> */}
                     </View> :
                     children
