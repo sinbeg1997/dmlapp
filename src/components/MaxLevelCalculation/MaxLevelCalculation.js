@@ -31,6 +31,7 @@ const MaxLevelCalculation = () => {
     // const foodCost = calculateFoodCost(currentLevel, targetLevel);
     // const foodCostDisplay = displayNumber(foodCost);
     const maxLevel = calculateMaxLevel(+currentLevel, +availableFood);
+    const addditionalFoodNeeded = calculateFoodCost(+currentLevel, +maxLevel + 1) - availableFood;
     return (
         <BlockContent
             title="Max level calculation"
@@ -86,8 +87,15 @@ const MaxLevelCalculation = () => {
                                 backgroundColor: "#fff",
                                 width: 150,
                                 height: 50,
-                                // marginLeft: "auto"
+                                marginRight: 10
                             }}
+                        />
+                        <Image
+                            style={{
+                                height: 36,
+                                width: 60,
+                            }}
+                            source={require("@assets/img/food.png")}
                         />
                     </View>
                     <View style={{
@@ -106,13 +114,36 @@ const MaxLevelCalculation = () => {
                             <Text style={{ fontFamily: "Grobold", marginRight: 10, fontSize: 24 }}>
                                 {maxLevel}
                             </Text>
-                            {/* <Image
+                        </View>
+                    </View>
+                    <View style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        marginBottom: 20,
+                        flexWrap: "wrap"
+                    }}>
+                        <Text style={{ marginRight: 10, fontSize: 16 }}>
+                            <Text>Additional food needed to reach level {` `}</Text>
+                            <Text style={{ fontFamily: "Grobold", fontSize: 18 }}>{maxLevel < 100 ? maxLevel + 1 : 100}</Text>:
+                        </Text>
+                        <View
+                            style={{
+                                flexDirection: "row",
+                                alignItems: "center",
+                                flexWrap: "wrap"
+                            }}
+                        >
+                            <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+                                {maxLevel < 100 ? displayNumber(addditionalFoodNeeded) : 0}
+                            </Text>
+                            <Image
                                 style={{
-                                    height: 36,
-                                    width: 60,
+                                    height: 18,
+                                    width: 30,
+                                    marginLeft: 5
                                 }}
                                 source={require("@assets/img/food.png")}
-                            /> */}
+                            />
                         </View>
                     </View>
                 </View>
