@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, Image, Dimensions } from "react-native";
+import { Text, View, Image, Dimensions, TouchableOpacity } from "react-native";
 import { APP_DOMAIN } from "@constant/constant";
 import { get, isString } from "lodash";
 import { calcBaseAttack, calcBaseHealth, calcBaseGold } from "@utils/helpers";
 
 const DragonItem = ({
     dragonData,
+    onPress,
     ...props
 }) => {
     const dragonName = get(dragonData, "name", '---');
@@ -17,12 +18,13 @@ const DragonItem = ({
     const baseHealth = calcBaseHealth(dragonName, dragonElements, dragonType);
     const baseGold = calcBaseGold(dragonElements, dragonType);
     return (
-        <View
+        <TouchableOpacity
             style={{
                 flex: 1,
                 padding: 15,
                 marginTop: 10,
             }}
+            onPress={onPress}
         >
             <View style={{
                 flexDirection: "row",
@@ -132,7 +134,7 @@ const DragonItem = ({
                     </View>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

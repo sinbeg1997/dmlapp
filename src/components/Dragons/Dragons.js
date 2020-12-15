@@ -4,6 +4,7 @@ import BlockContent from "@components/sharedcomponents/BlockContent";
 import DragonItem from "./DragonItem";
 import { isArray } from "lodash";
 import Divider from "@components/UI/Divider";
+import DragonDetail from "./DragonDetail/DragonDetail";
 
 
 const PAGE_SIZE_DEFAULT = 5;
@@ -20,6 +21,8 @@ const Dragons = ({
     const [currentPage, setCurrentPage] = useState(0);
     const [isRefreshing, setRefreshing] = useState(false);
     const [isLoadMore, setLoadMore] = useState(false);
+    const [showDragonDetail, setShowDragonDetail] = useState(false);
+    const [dragonSelected, setDragonSelected] = useState(null);
 
     useEffect(() => {
         getData(currentPage, PAGE_SIZE_DEFAULT, searchNameValue);
@@ -99,6 +102,11 @@ const Dragons = ({
                                 return (
                                     <DragonItem
                                         dragonData={item}
+                                        onPress={() => {
+
+                                            setDragonSelected(item);
+                                            setShowDragonDetail(true);
+                                        }}
                                     />
                                 )
                             }}
@@ -109,6 +117,15 @@ const Dragons = ({
                             onEndReached={handleLoadMore}
                         />
                 }
+                {
+                    showDragonDetail &&
+                    <DragonDetail
+                        data={dragonSelected}
+                        open={showDragonDetail}
+                        onClose={() => setShowDragonDetail(false)}
+                    />
+                }
+
             </BlockContent>
         </View>
     )
