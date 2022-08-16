@@ -1,8 +1,8 @@
-DML Planner App
+<h1>DML Planner App</h1>
 
-Description: This is the application used to look up information about dragons in the game dragon mania legend.
+<b>Description:</b> This is the application used to look up information about dragons in the game dragon mania legend.
 
-Technology: JS, React, React Native
+<b>Technology:</b> JS, React, React Native, Redux
 
 Setup: Node (v10)
 
